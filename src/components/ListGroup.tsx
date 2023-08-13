@@ -39,6 +39,7 @@ function ListGroup(props: ListGroupProps) {
             }
             onClick={() => {
               setSelectedIndex(index);
+              props.onSelectItem(item);
             }}
           >
             {item}
