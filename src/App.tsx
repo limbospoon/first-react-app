@@ -1,4 +1,5 @@
 import Alert from "./Alert";
+import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -7,6 +8,10 @@ function App() {
 
   const handleOnItemSelect = (item: string) => {
     console.log("Selected ", item);
+  };
+
+  const handleOnButtonClicked = () => {
+    console.log("Click Button");
   };
 
   return (
@@ -24,6 +29,7 @@ function App() {
       <Alert>
         <span>This is an Alert</span>
       </Alert>
+      <Button name="Equip" onClickedButton={handleOnButtonClicked} />
     </div>
   );
 }
