@@ -1,19 +1,17 @@
+import { useState } from "react";
 
 function ListGroup() {
+  const items = ["Sword", "Mace", "Staff", "Spear"];
 
-  let items = [
-    'Sword',
-    'Mace',
-    'Staff',
-    'Spear'
-  ];
-
-  items = [];
+  /* Make react dynamic var for compent */
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   /* Check if list is empty */
   const ListSizeCheck = items.length === 0 && <p>No Item Found</p>;
   /* Function that returns ListSizeCheck variable */
-  const ListIsEmpty = () => { return ListSizeCheck;}
+  const ListIsEmpty = () => {
+    return ListSizeCheck;
+  };
 
   return (
     /* Can only return html elements but using curly braces allows you to return more then html elements */
@@ -25,7 +23,11 @@ function ListGroup() {
       {/* class needs to be changed to className for JSX */}
       <ul className="list-group">
         {/* Covert items to list elements. Note: must be done between curly braces */}
-        {items.map(item => <li key={item} className="list-group-item">{item}</li>)}
+        {items.map((item, index) => (
+          <li key={item} className={selectedIndex === index ? "list-group-item active" : "list-group-item"} onClick={() => {setSelectedIndex(index);}}>
+            {item}
+          </li>
+        ))}
       </ul>
     </>
   );
